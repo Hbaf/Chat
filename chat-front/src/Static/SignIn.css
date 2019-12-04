@@ -1,0 +1,12 @@
+#signin{
+    margin:0 auto;
+    width: 40vw;
+}
+
+#signin > *{
+    text-align: center;
+
+}
+#signin > * > *{
+    width: 100%;
+}

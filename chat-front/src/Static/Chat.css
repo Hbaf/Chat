@@ -1,0 +1,43 @@
+#chat{
+    margin: 0 auto;
+    padding: 10px;
+    width: 50vw;
+    height: 80vh;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.message{
+    margin: 1px;
+    padding: 0;
+    border: 0 solid;
+    border-bottom-width: 1px;
+}
+
+.message-header > *{
+    display: inline-block;
+    margin: 10px;
+}
+.message-header{
+    margin: 0;
+}
+
+.message-body{
+    margin:0;
+    padding: 5px;
+}
+
+.message-body > *{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#message-input{
+    width: 90%;
+}
+
+form > button{
+    width: auto;
+}

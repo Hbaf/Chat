@@ -4,19 +4,18 @@ import NavBar from "./layout/NavBar";
 import MainPage from "./MainPage";
 import SignIn from "./Auth/SignIn";
 import SignOut from "./Auth/SignOut";
-import Chat from "./Chat";
 import {connect} from "react-redux";
-import * as actions from "../Actions/AuthActions";
 import { roomEndP } from "../Endpoints";
+import Room from "./Room";
 
 class SiteRouter extends Component{
     render() {
         return (
             <BrowserRouter>
-                <NavBar isUserLogged={this.props.isUserLogged} logOut={this.logOut.bind(this)}/>
+                <NavBar isUserLogged={this.props.isUserLogged}/>
                 <Switch>
                     <Route exact path='/' component={ MainPage }/>
-                    <Route exact path='/chat' render={(match) => {
+                    <Route path='/chat' render={(match) => {
                         const params = new URLSearchParams(match.location.search);
                         const roomID = params.get('room');
                         if (!this.props.isUserLogged)
@@ -25,19 +24,17 @@ class SiteRouter extends Component{
                             roomEndP.enterRoom({name: this.props.userName, roomID});
                         else
                             roomEndP.createRoom({name: this.props.userName});
-                        return <Chat />;
+                        return <Room />;
                     }}/>
                     <Route path='/signin' render={() => {
                         return (!this.props.isUserLogged)? <SignIn/> : <Redirect to='/'/>;
                     }}/>
-                    <Route path='/signout' component={ SignOut }/>
+                    <Route path='/signout' render={() => {
+                        return (this.props.isUserLogged)? <SignOut /> : <Redirect to='/'/>;
+                    }}/>
                 </Switch>
             </BrowserRouter>
         );
-    }
-
-    logOut = function (){
-        this.props.signOutUser();
     }
 }
 
@@ -48,12 +45,4 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        signOutUser: () => {
-            dispatch(actions.signOutUser())
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SiteRouter);
+export default connect(mapStateToProps)(SiteRouter);

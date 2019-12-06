@@ -8,7 +8,7 @@ const NavBar = (props) => {
     return (
         <nav>
             <Link to='/'>Home</Link>
-            { props.isUserLogged ? <SignOutNav logOut={props.logOut}/> : <SignInNav /> }
+            { props.isUserLogged ? <SignOutNav /> : <SignInNav /> }
         </nav>
     )
 };

@@ -8,11 +8,10 @@ const initState = {
     roomID: '',
 };
 
-const chatReducer = (state = initState, action) => {
+const roomReducer = (state = initState, action) => {
     switch (action.type) {
         case types.ROOM_ENTERED: {
             return {
-                ...state,
                 users: [...action.users],
                 roomExist: true,
                 roomIsFull: false,
@@ -26,14 +25,15 @@ const chatReducer = (state = initState, action) => {
                 ...state,
                 roomExist: true,
                 roomIsFull: true,
-            }
+            };
         }
 
         case types.ROOM_DOESNT_EXIST:{
             return {
                 ...state,
                 roomExist: false,
-            }
+                roomIsFull: false,
+            };
         }
 
         case types.LEAVE_THE_ROOM: {
@@ -41,15 +41,26 @@ const chatReducer = (state = initState, action) => {
                 ...state,
                 users: [],
                 roomEntered: false,
+                roomExist: false,
+                roomIsFull: false,
             };
         }
 
         case types.USER_CAME_OUT:{
-            let tempUsers = state.users.filter(user => {return action.userID !== user.id});
+            let tempUsers = state.users.filter(user => {return action.user.userID !== user.userID});
             return {
                 ...state,
                 users: tempUsers
-            }
+            };
+        }
+
+        case types.USER_CAME_IN:{
+            let tempUsers = [...state.users];
+            tempUsers.push(action.user);
+            return {
+                ...state,
+                users: tempUsers
+            };
         }
 
         default:
@@ -58,4 +69,4 @@ const chatReducer = (state = initState, action) => {
 };
 
 
-export default chatReducer;
+export default roomReducer;

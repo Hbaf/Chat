@@ -5,7 +5,7 @@ const SignOutNav = (props) =>{
     return (
         <ul className='nav-links'>
             <li><Link to='/chat'>Chat</Link></li>
-            <li><Link to='/signout' onClick={props.logOut}>Sign Out</Link></li>
+            <li><Link to='/signout'>Sign Out</Link></li>
         </ul>
     )
 };

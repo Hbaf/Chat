@@ -1,7 +1,6 @@
 import * as types from './ActionTypes';
 
 export function roomEntered(data) {
-    console.log(data.users);
     return {
         type: types.ROOM_ENTERED,
         roomID: data.roomID,
@@ -30,14 +29,13 @@ export function roomDoesntExist() {
 export function userCameOut(data){
     return {
         type: types.USER_CAME_OUT,
-        userID: data.userID
+        user: data
     }
 }
 
 export function userCameIn(data) {
     return {
         type: types.USER_CAME_IN,
-        userName: data.userName,
-        userID: data.userID
+        user: data,
     }
 }

@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import '../../Static/SignIn.css'
-import {Redirect} from "react-router";
+import React from 'react'
+import { Redirect } from "react-router";
+import store from "../../store";
+import * as actions from "../../Actions/AuthActions";
 
-class SignOut extends Component{
-    render() {
-        return <Redirect to='/'/>
-    }
-}
+const SignOut = () => {
+    store.dispatch(actions.signOutUser());
+    return <Redirect to='/'/>
+};
 
 export default SignOut

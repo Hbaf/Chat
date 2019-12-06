@@ -16,8 +16,8 @@ let rooms = new Map();
 
 io.on(actions.CONNECTION, socket => {
     console.log("New client - " + socket.id);
-    socket.on(actions.CREATE_ROOM, createRoom);
     socket.on(actions.CONNECT_TO_ROOM, connectToRoom);
+    socket.on(actions.CREATE_ROOM, createRoom);
     socket.on(actions.LEAVE_ROOM, disconnect);
     socket.on(actions.DISCONNECT, disconnect);
     socket.on(actions.SEND_MESSAGE, sendMessage);
@@ -34,7 +34,12 @@ function createRoom(data){
     //подключаем пользователя
     socket.join(roomID);
     //сообщаем пользователю, что комната создана
-    socket.emit(actions.ROOM_CREATED, { roomID: roomID, users: [...room.userNames.values()] });
+    socket.emit(actions.ROOM_CREATED, { roomID: roomID, users: [...room.users.values()].map(user => {
+            return {
+                userName: user.name,
+                userID: user.id,
+            }
+        }) });
 }
 
 function connectToRoom(data) {
@@ -54,16 +59,17 @@ function connectToRoom(data) {
     let user = new User(name, socket.id);
 
     room.addUser(user);
-    if (room.countOfUsers() === 6){
-        room.isFull = true;
-    }
+    io.to(roomID).emit(actions.USER_JOINED, {userName: user.name, userID: user.id});
     socket.join(roomID);
-    socket.emit(actions.ROOM_CONNECTED, { roomID: roomID, users: [...room.userNames.values()] });
-    io.to(roomID).emit(actions.USER_JOINED, user);
+    socket.emit(actions.ROOM_CONNECTED, { roomID: roomID, users: [...room.users.values()].map(user => {
+        return {
+            userName: user.name,
+            userID: user.id,
+        }
+    })});
 }
 
 function disconnect() {
-    console.log('disconnect');
     const socket = this;
     const room = findRoomDisconnectedUser(socket.id);
     if (!room) {
@@ -71,10 +77,10 @@ function disconnect() {
     }
     let user = room.getUserById(socket.id);
     room.deleteUser(socket.id);
-    if (room.countOfUsers() === 0) {
+    if (room.isEmpty) {
         rooms.delete(room.id);
     } else {
-        io.to(room.roomID).emit(actions.USER_CAME_OUT, user);
+        io.to(room.id).emit(actions.USER_CAME_OUT, {userName: user.name, userID: user.id});
     }
 }
 

@@ -27,11 +27,11 @@ class RoomEndP {
 
     // handlers
     onRoomDoesntExist(){
-        this.socket.on(SocketActions.ROOM_DOESNT_EXIST, store.dispatch(RoomActions.roomDoesntExist()))
+        this.socket.on(SocketActions.ROOM_DOESNT_EXIST, () => store.dispatch(RoomActions.roomDoesntExist()))
     }
 
     onRoomIsFull(){
-        this.socket.on(SocketActions.ROOM_IS_FULL, store.dispatch(RoomActions.roomIsFull()))
+        this.socket.on(SocketActions.ROOM_IS_FULL, () => store.dispatch(RoomActions.roomIsFull()))
     }
 
     onRoomCreated(){

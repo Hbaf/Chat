@@ -1,0 +1,32 @@
+.notification{
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #b41509;
+    opacity: .7;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    border-radius: 30px;
+
+}
+
+#room-panel{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    width: 100vw;
+}
+
+#info-panel{
+    margin: 20px;
+    float: right;
+}
+
+.info-panel-users{
+    margin-top: 20px;
+    margin-right: 10px;
+}

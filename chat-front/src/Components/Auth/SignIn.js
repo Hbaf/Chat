@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../../Static/SignIn.css'
 import * as actions from '../../Actions/AuthActions'
-import {connect} from "react-redux";
+import store from '../../store';
 
 class SignIn extends Component{
 
@@ -11,7 +11,7 @@ class SignIn extends Component{
         if (!nickName){
             return
         }
-        this.props.signInUser(nickName);
+        store.dispatch(actions.signInUser({userName: nickName}))
     };
 
     render() {
@@ -30,12 +30,4 @@ class SignIn extends Component{
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        signInUser: (nickName) => {
-            dispatch(actions.signInUser({userName: nickName}))
-        }
-    }
-};
-
-export default connect(null, mapDispatchToProps)(SignIn)
+export default SignIn

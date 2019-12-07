@@ -16,16 +16,21 @@ class SignIn extends Component{
 
     render() {
         return (
-            <form id='signin' onSubmit={this.handleSubmit}>
-                <h3>SignIn</h3>
-                <div className='input-field'>
-                    <label htmlFor='nick'>Nick Name</label>
-                    <input type="text" id='nick' onChange={this.handleChange}/>
-                </div>
-                <div className='input-field'>
-                    <button>Login</button>
-                </div>
-            </form>
+            <div className='form'>
+                <form id='signin' onSubmit={this.handleSubmit}>
+                    <input type="text" id='nick' autoComplete='off' onChange={this.handleChange} required/>
+                    <label htmlFor='nick' id='label-nick'>
+                        <span id='content-nick'>
+                            Nick Name
+                        </span>
+                    </label>
+                    <button>
+                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                            <path d="M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
         );
     }
 }

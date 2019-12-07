@@ -27,10 +27,10 @@ class SiteRouter extends Component{
                         return <Room />;
                     }}/>
                     <Route path='/signin' render={() => {
-                        return (!this.props.isUserLogged)? <SignIn/> : <Redirect to='/'/>;
+                        return (!this.props.isUserLogged) ? <SignIn/> : <Redirect to='/'/>;
                     }}/>
                     <Route path='/signout' render={() => {
-                        return (this.props.isUserLogged)? <SignOut /> : <Redirect to='/'/>;
+                        return (this.props.isUserLogged) ? <SignOut /> : <Redirect to='/'/>;
                     }}/>
                 </Switch>
             </BrowserRouter>

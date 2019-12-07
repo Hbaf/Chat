@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import SiteRouter from "./Components/SiteRouter";
 import store from "./store";
 
+import './Static/app.css'
+
 
 ReactDOM.render(
     <Provider store={store}>

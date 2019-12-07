@@ -37,9 +37,12 @@ class Chat extends Component{
                     {this.props.messages.map(message => { return <Message message={message} key={message.time}/> })}
                 </div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type='text' id='message-input'
-                           value={this.state.message} onChange={this.handleChange}/>
-                    <button>Send</button>
+                    <fieldset>
+                        <legend></legend>
+                        <input type='text' id='message-input' autoComplete='off'
+                               value={this.state.message} onChange={this.handleChange}/>
+                        <button>Send</button>
+                    </fieldset>
                 </form>
             </div>
         );

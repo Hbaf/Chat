@@ -48,7 +48,7 @@
     box-sizing: border-box;
 }
 
-#chat > form{
+#chat form{
     position: absolute;
     bottom: 3%;
     width: 100%;
@@ -58,6 +58,6 @@
     width: 90%;
 }
 
-form > button{
+form button{
     width: auto;
 }

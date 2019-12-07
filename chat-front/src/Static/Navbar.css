@@ -1,8 +1,35 @@
 nav{
-    display: inline;
-    margin-bottom: 20px;
+    display: flex;
+    min-height: 5vh;
+    justify-content: space-between;
+    align-items: center;
+    background-color: darkcyan;
+    margin-bottom: 10px;
+}
+
+nav a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.logo{
+    padding: 0 5%;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 2rem;
 }
 
 .nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
 
+.nav-links a{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-links li{
+    list-style: none;
 }

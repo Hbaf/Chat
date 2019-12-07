@@ -7,7 +7,9 @@ import '../../Static/Navbar.css'
 const NavBar = (props) => {
     return (
         <nav>
-            <Link to='/'>Home</Link>
+            <div className='logo'>
+                <Link to='/'>Home</Link>
+            </div>
             { props.isUserLogged ? <SignOutNav /> : <SignInNav /> }
         </nav>
     )

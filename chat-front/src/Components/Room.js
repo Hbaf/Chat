@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Chat from "./Chat";
 import CurrentUser from "./CurrentUser";
 
-import '../Static/Room.css'
+import '../Static/css/Room.css'
 import store from "../store";
 import { clearMessages } from "../Actions/ChatActions";
 import { leaveTheRoom } from '../Actions/RoomActions';
@@ -12,8 +12,6 @@ import { roomEndP } from '../Endpoints';
 
 class Room extends Component{
     render() {
-        console.log(this.props.roomExist);
-        console.log(this.props.roomIsFull);
         if (!this.props.roomExist)
             return (
                 <div className='notification'>
@@ -31,6 +29,7 @@ class Room extends Component{
         if (this.props.roomEntered)
             return (
                 <div id='room-panel'>
+                    <Chat />
                     <div id='info-panel'>
                         <a href={ this.props.url + '/chat?room=' + this.props.roomID}> Current room </a>
                         <div className='info-panel-users'>
@@ -38,7 +37,6 @@ class Room extends Component{
                             { this.props.users.map( user => <CurrentUser userName={user.userName} key={user.userID}/>)}
                         </div>
                     </div>
-                    <Chat />
                 </div>
             );
     }

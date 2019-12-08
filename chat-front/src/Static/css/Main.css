@@ -1,0 +1,17 @@
+.main{
+    height: 80vh;
+    display: flex;
+    justify-content: space-around;
+    /*align-items: center;*/
+}
+.description{
+    height: 60%;
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-around;
+}
+
+.main svg{
+    align-self: center;
+    width: 40%;
+}

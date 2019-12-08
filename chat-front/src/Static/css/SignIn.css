@@ -3,9 +3,12 @@
     width: 40vw;
     height: 50vh;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+}
+.form > p{
+    font-size: 1.5rem;
 }
 
 #signin{
@@ -24,13 +27,15 @@
     border: none;
     outline: none;
     box-shadow: none;
+    color: black;
+    font-size: 1.2rem;
 }
+
 #signin button{
     height: 100%;
     width: 20%;
     background: transparent;
     border: none;
-    /*text-align: center;*/
 }
 
 #signin label{
@@ -41,6 +46,8 @@
     left: 0;
     pointer-events: none;
     border-bottom: solid 1px black;
+    background-color: transparent;
+    font-size: 1.1rem;
 }
 
 #signin label::after{
@@ -64,7 +71,7 @@
 #signin input:focus + #label-nick #content-nick,
 #signin input:valid + #label-nick #content-nick
 {
-    transform: translateY(-150%);
+    transform: translateY(-110%);
     font-size: 1rem;
     color: darkcyan;
 }

@@ -6,7 +6,7 @@ import store from '../store'
 import Message from "../Components/Message";
 import {receiveMessage} from "../Actions/ChatActions";
 
-import '../Static/Chat.css'
+import '../Static/css/Chat.css'
 
 class Chat extends Component{
     constructor(props) {
@@ -36,14 +36,17 @@ class Chat extends Component{
                 <div id='chat-messages'>
                     {this.props.messages.map(message => { return <Message message={message} key={message.time}/> })}
                 </div>
-                <form onSubmit={this.handleSubmit}>
-                    <fieldset>
-                        <legend></legend>
-                        <input type='text' id='message-input' autoComplete='off'
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type='text' autoComplete='off' placeholder='Write a message...' required
                                value={this.state.message} onChange={this.handleChange}/>
-                        <button>Send</button>
-                    </fieldset>
-                </form>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm2 12l-4.5 4.5 1.527 1.5 5.973-6-5.973-6-1.527 1.5 4.5 4.5z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
             </div>
         );
     }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SignInNav from "./SignInNav";
 import SignOutNav from "./SignOutNav";
-import '../../Static/Navbar.css'
+import '../../Static/css/Navbar.css'
 
 const NavBar = (props) => {
     return (

@@ -32,6 +32,7 @@ class SiteRouter extends Component{
                     <Route path='/signout' render={() => {
                         return (this.props.isUserLogged) ? <SignOut /> : <Redirect to='/'/>;
                     }}/>
+                    <Redirect to="/" />
                 </Switch>
             </BrowserRouter>
         );

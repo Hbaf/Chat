@@ -1,0 +1,42 @@
+#room-panel{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#chat{
+    position: relative;
+    padding: 1%;
+    width: 80%;
+    height: 100%;
+    border: 1px solid darkcyan;
+    border-radius: 10px;
+}
+
+#info-panel{
+    width: 10%;
+    padding: 1% 2%;
+}
+
+.info-panel-users{
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.notification{
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #b41509;
+    opacity: .7;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    border-radius: 30px;
+}
+
+.notification *{
+    background-color: transparent;
+}

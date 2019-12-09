@@ -25,20 +25,17 @@ io.on(actions.CONNECTION, socket => {
 
 function createRoom(data){
     const socket = this;
-    //рандомный ид по времени
+    // рандомный ид по времени
     let roomID = uuidv1();
     let room = new Room(roomID);
     let user = new User(data.name, socket.id);
     room.addUser(user);
     rooms.set(roomID, room);
-    //подключаем пользователя
+    // подключаем пользователя
     socket.join(roomID);
-    //сообщаем пользователю, что комната создана
+    // сообщаем пользователю, что комната создана
     socket.emit(actions.ROOM_CREATED, { roomID: roomID, users: [...room.users.values()].map(user => {
-            return {
-                userName: user.name,
-                userID: user.id,
-            }
+            return user.toObject();
         }) });
 }
 
@@ -46,12 +43,12 @@ function connectToRoom(data) {
     const socket = this;
     let {name, roomID} = data;
     let room = rooms.get(roomID);
-    //проверка существует ли комната
+    // проверка существует ли комната
     if (!room) {
         socket.emit(actions.ROOM_DOESNT_EXIST);
         return;
     }
-    //переполнена ли комната
+    // переполнена ли комната
     if (room.isFull) {
         socket.emit(actions.ROOM_IS_FULL);
         return;
@@ -62,10 +59,7 @@ function connectToRoom(data) {
     io.to(roomID).emit(actions.USER_JOINED, {userName: user.name, userID: user.id});
     socket.join(roomID);
     socket.emit(actions.ROOM_CONNECTED, { roomID: roomID, users: [...room.users.values()].map(user => {
-        return {
-            userName: user.name,
-            userID: user.id,
-        }
+        return user.toObject();
     })});
 }
 

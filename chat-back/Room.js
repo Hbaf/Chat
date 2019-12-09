@@ -14,6 +14,13 @@ module.exports.Room = class Room {
         this._isEmpty = false;
     }
 
+    deleteUser(id) {
+        this._users.delete(id);
+        this._isFull = false;
+        if (this._users.size === 0)
+            this._isEmpty = true;
+    }
+
     getUserById(id) {
         return this._users.get(id);
     }
@@ -29,14 +36,7 @@ module.exports.Room = class Room {
     get users() {
         return this._users;
     }
-
-    deleteUser(id) {
-        this._users.delete(id);
-        this._isFull = false;
-        if (this._users.size === 0)
-            this._isEmpty = true;
-    }
-
+    
     get id() {
         return this._id;
     }

@@ -24,8 +24,8 @@ module.exports.User = class User {
     //перевод в удобный вид для отправки
     toObject() {
         return {
-            name: this._name,
-            id: this._id
+            userName: this._name,
+            userID: this._id
         }
     }
 };
